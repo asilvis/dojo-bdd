@@ -104,7 +104,7 @@ public class ColaboradorStepDef extends SpringTest {
         Gson gson = new Gson();
         try {
             MultipleInfoException ex = gson.fromJson(recuperar.getResponseBodyAsString(), MultipleInfoException.class);
-            String msgs = ex.getInfoExceptions().stream().map(InfoException::getConstraintViolations).flatMap(Collection::stream).collect(Collectors.joining("\n"));
+            String msgs = ex.getInfoExceptions().stream().map(InfoException::getConstraintViolations).flatMap(Collection::stream).collect(Collectors.joining(System.lineSeparator()));
             assertThat(msgs).isEqualTo(msg);
         } catch (Exception e) {
             InfoException ex = gson.fromJson(recuperar.getResponseBodyAsString(), InfoException.class);
