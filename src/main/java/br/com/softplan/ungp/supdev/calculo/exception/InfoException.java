@@ -2,6 +2,7 @@ package br.com.softplan.ungp.supdev.calculo.exception;
 
 import javax.validation.ConstraintViolation;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 public class InfoException extends RuntimeException {
@@ -20,7 +21,7 @@ public class InfoException extends RuntimeException {
 	public InfoException(final String message, final String title){
 		this.message = message;
 		this.title = title;
-		constraintViolations = new HashSet<>();;
+		constraintViolations = new LinkedHashSet<>();
 	}
 
 	public InfoException(String message, Set<String> constraintViolations) {

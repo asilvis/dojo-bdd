@@ -20,4 +20,10 @@ public class GlobalControllerExceptionHandler {
         Set<String> violations = e.getConstraintViolations().stream().map(ConstraintViolation::getMessage).collect(Collectors.toSet());
         return new InfoException(e.getMessage(), violations);
 	}
+
+	@ExceptionHandler(MultipleInfoException.class)
+	@ResponseStatus(HttpStatus.BAD_REQUEST)
+	public @ResponseBody MultipleInfoException validatorException(MultipleInfoException e) {
+		return e;
+	}
 }
