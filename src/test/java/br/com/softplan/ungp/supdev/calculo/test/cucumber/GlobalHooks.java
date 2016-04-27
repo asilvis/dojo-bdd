@@ -1,17 +1,18 @@
 package br.com.softplan.ungp.supdev.calculo.test.cucumber;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.sql.SQLException;
+
+import javax.sql.DataSource;
+
+import org.h2.tools.RunScript;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import br.com.softplan.ungp.supdev.calculo.test.configuracao.Script;
 import br.com.softplan.ungp.supdev.calculo.test.configuracao.SpringTest;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
-import org.h2.tools.RunScript;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
-import javax.sql.DataSource;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.sql.SQLException;
 
 public class GlobalHooks extends SpringTest {
 
