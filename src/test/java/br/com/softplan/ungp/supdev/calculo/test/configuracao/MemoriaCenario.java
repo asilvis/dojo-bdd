@@ -1,9 +1,9 @@
 package br.com.softplan.ungp.supdev.calculo.test.configuracao;
 
-import org.springframework.stereotype.Component;
-
 import java.util.HashMap;
 import java.util.Map;
+
+import org.springframework.stereotype.Component;
 
 @Component
 public class MemoriaCenario {

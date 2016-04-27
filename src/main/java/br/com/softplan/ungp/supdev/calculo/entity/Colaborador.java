@@ -1,12 +1,21 @@
 package br.com.softplan.ungp.supdev.calculo.entity;
 
-import org.hibernate.validator.constraints.NotEmpty;
-import org.hibernate.validator.constraints.br.CPF;
-
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.util.Date;
+
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.NotEmpty;
+import org.hibernate.validator.constraints.br.CPF;
 
 @Entity
 @Table(name = "pessoa")
@@ -22,7 +31,7 @@ public class Colaborador {
     private Date dataNascimento;
 
     @NotEmpty(message = "O n\u00famero do CPF \u00e9 obrigat\u00f3rio")
-    @CPF(message = "O n\u00famero do CPF \u00e9 inv\u00e1lido")
+    @CPF(message = "Atenção - CPF Inválido")
     private String numeroCPF;
 
     private BigDecimal remuneracao;
