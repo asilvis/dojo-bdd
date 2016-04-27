@@ -20,7 +20,7 @@ Funcionalidade: Incluir colaborador
     Então o colaborador com nome "André de Lima e Silva" será cadastrado com sucesso
 
   Cenario: Incluir uma nova pessoa sem CPF
-    Dado uma pessoa com nome "Andr? de Lima e Silva"
+    Dado uma pessoa com nome "André de Lima e Silva"
     E a data de nascimento é "07/05/1989"
     E o número do CPF não é informado
     E o cargo é "ANS"
