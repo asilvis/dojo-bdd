@@ -33,11 +33,6 @@
 			<artifactId>h2</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>br.com.softplan.ungp.spring.ds</groupId>
-			<artifactId>ungp-spring-ds</artifactId>
-			<version>01.00.01</version>
-		</dependency>
-		<dependency>
 			<groupId>xml-apis</groupId>
 			<artifactId>xml-apis</artifactId>
 			<version>1.3.04</version>
