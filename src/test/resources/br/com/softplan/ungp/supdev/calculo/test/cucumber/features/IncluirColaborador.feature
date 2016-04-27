@@ -1,59 +1,59 @@
 # language: pt
-# encoding: ISO-8859-1
+# encoding: UTF-8
 
-@Pessoa
+@Colaborador
 Funcionalidade: Incluir colaborador
   Como um contador
   Eu quero incluir um nova colaborador
-  Para disponibiliz·-lo no c·lculo da folha de pagamento
+  Para disponibiliz√°-lo no c√°lculo da folha de pagamento
 
   Contexto:
     Dado que exista o cargo "Analista de sistemas" com sigla "ANS"
 
-  Cen·rio: Incluir um novo colaborador
-    Dado uma pessoa com nome "AndrÈ de Lima e Silva"
-    E a data de nascimento È "07/05/1989"
-    E o n˙mero do CPF È "871.934.776-68"
-    E o cargo È "ANS"
-    E a remuneraÁ„o È "2500,00"
+  Cenario: Incluir um novo colaborador
+    Dado uma pessoa com nome "Andr√© de Lima e Silva"
+    E a data de nascimento √© "07/05/1989"
+    E o n√∫mero do CPF √© "871.934.776-68"
+    E o cargo √© "ANS"
+    E a remunera√ß√£o √© "2500,00"
     Quando realizo o cadastro do colaborador
-    Ent„o o colaborador com nome "AndrÈ de Lima e Silva" ser· cadastrado com sucesso
+    Ent√£o o colaborador com nome "Andr√© de Lima e Silva" ser√° cadastrado com sucesso
 
-  Cen·rio: Incluir uma nova pessoa sem CPF
-    Dado uma pessoa com nome "AndrÈ de Lima e Silva"
-    E a data de nascimento È "07/05/1989"
-    E o n˙mero do CPF n„o È informado
-    E o cargo È "ANS"
-    E a remuneraÁ„o È "2500,00"
+  Cenario: Incluir uma nova pessoa sem CPF
+    Dado uma pessoa com nome "Andr? de Lima e Silva"
+    E a data de nascimento √© "07/05/1989"
+    E o n√∫mero do CPF n√£o √© informado
+    E o cargo √© "ANS"
+    E a remunera√ß√£o √© "2500,00"
     Quando realizo o cadastro do colaborador
-    Ent„o a pessoa com nome "AndrÈ de Lima e Silva" n„o ser· cadastrada
-    E ser· apresentada uma mensagem:
+    Ent√£o a pessoa com nome "Andr√© de Lima e Silva" n√£o ser√° cadastrada
+    E ser√° apresentada uma mensagem:
       """
-      O n˙mero do CPF È obrigatÛrio
-      """
-
-  Cen·rio: Incluir uma nova pessoa sem data de nascimento
-    Dado uma pessoa com nome "AndrÈ de Lima e Silva"
-    E a data de nascimento n„o È informada
-    E o n˙mero do CPF È "871.934.776-68"
-    E o cargo È "ANS"
-    E a remuneraÁ„o È "2500,00"
-    Quando realizo o cadastro do colaborador
-    Ent„o a pessoa com nome "AndrÈ de Lima e Silva" n„o ser· cadastrada
-    E ser· apresentada uma mensagem:
-      """
-      A data de nascimento È obrigatÛria
+      O n√∫mero do CPF √© obrigat√≥rio
       """
 
-  Cen·rio: Incluir uma nova pessoa com o n˙mero do CPF inv·lido
-    Dado uma pessoa com nome "AndrÈ de Lima e Silva"
-    E a data de nascimento È "07/05/1989"
-    E o n˙mero do CPF È "871.934.776-44"
-    E o cargo È "ANS"
-    E a remuneraÁ„o È "2500,00"
+  Cenario: Incluir uma nova pessoa sem data de nascimento
+    Dado uma pessoa com nome "Andr√© de Lima e Silva"
+    E a data de nascimento n√£o √© informada
+    E o n√∫mero do CPF √© "871.934.776-68"
+    E o cargo √© "ANS"
+    E a remunera√ß√£o √© "2500,00"
     Quando realizo o cadastro do colaborador
-    Ent„o a pessoa com nome "AndrÈ de Lima e Silva" n„o ser· cadastrada
-    E ser· apresentada uma mensagem:
+    Ent√£o a pessoa com nome "Andr√© de Lima e Silva" n√£o ser√° cadastrada
+    E ser√° apresentada uma mensagem:
       """
-      O n˙mero do CPF È inv·lido
+      A data de nascimento √© obrigat√≥ria
+      """
+
+  Cenario: Incluir uma nova pessoa com o n?mero do CPF inv?lido
+    Dado uma pessoa com nome "Andr√© de Lima e Silva"
+    E a data de nascimento √© "07/05/1989"
+    E o n√∫mero do CPF √© "871.934.776-44"
+    E o cargo √© "ANS"
+    E a remunera√ß√£o √© "2500,00"
+    Quando realizo o cadastro do colaborador
+    Ent√£o a pessoa com nome "Andr√© de Lima e Silva" n√£o ser√° cadastrada
+    E ser√° apresentada uma mensagem:
+      """
+      O n√∫mero do CPF √© inv√°lido
       """

@@ -42,14 +42,7 @@ public class CalculoStepDef extends SpringTest {
 
     @Dado("^que existe um colaborador com nome \"([^\"]*)\" no cargo \"([^\"]*)\" com remuneração de \"([^\"]*)\"$")
     public void que_existe_um_colaborador_com_nome_no_cargo_com_remuneração_de(String nome, String siglaCargo, BigDecimal remuneracao) throws Throwable {
-        Cargo cargo = cargoRepository.findBySigla(siglaCargo);
-        Colaborador colaborador = new Colaborador();
-        colaborador.setNome(nome);
-        colaborador.setNumeroCPF("871.934.776-68");
-        colaborador.setDataNascimento(new Date());
-        colaborador.setCargo(cargo);
-        colaborador.setRemuneracao(remuneracao);
-        colaboradorRepository.save(colaborador);
+        que_existe_um_colaborador_com_nome_no_cargo_com_remuneração_de_e_dependentes(nome, siglaCargo, remuneracao, 0);
     }
 
     @Quando("^calculo o imposto de renda do \"([^\"]*)\" usando a tabela do IRRF \"([^\"]*)\"$")
@@ -72,5 +65,18 @@ public class CalculoStepDef extends SpringTest {
         tabelaIRRF.setSigla(sigla);
         tabelaIRRF.setValorDeducaoDependente(deducaoDependente);
         tabelaIRRFRepository.save(tabelaIRRF);
+    }
+
+    @Dado("^que existe um colaborador com nome \"([^\"]*)\" no cargo \"([^\"]*)\" com remuneração de \"([^\"]*)\" e \"([^\"]*)\" dependentes$")
+    public void que_existe_um_colaborador_com_nome_no_cargo_com_remuneração_de_e_dependentes(String nome, String siglaCargo, BigDecimal remuneracao, Integer dependentes) throws Throwable {
+        Cargo cargo = cargoRepository.findBySigla(siglaCargo);
+        Colaborador colaborador = new Colaborador();
+        colaborador.setNome(nome);
+        colaborador.setNumeroCPF("871.934.776-68");
+        colaborador.setDataNascimento(new Date());
+        colaborador.setCargo(cargo);
+        colaborador.setDependentes(dependentes);
+        colaborador.setRemuneracao(remuneracao);
+        colaboradorRepository.save(colaborador);
     }
 }

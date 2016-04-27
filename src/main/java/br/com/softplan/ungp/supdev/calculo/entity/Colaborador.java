@@ -30,6 +30,8 @@ public class Colaborador {
     @ManyToOne(fetch = FetchType.EAGER)
     private Cargo cargo;
 
+    private Integer dependentes;
+
     public Long getId() {
         return id;
     }
@@ -76,5 +78,13 @@ public class Colaborador {
 
     public void setCargo(Cargo cargo) {
         this.cargo = cargo;
+    }
+
+    public Integer getDependentes() {
+        return dependentes;
+    }
+
+    public void setDependentes(Integer dependentes) {
+        this.dependentes = dependentes;
     }
 }

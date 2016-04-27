@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.math.MathContext;
+import java.math.RoundingMode;
 import java.util.Optional;
 
 @Service
@@ -19,11 +21,16 @@ public class CalculoService {
     public ResultadoCalculoIRRF calculaIRRF(Colaborador colaborador, TabelaIRRF tabelaIRRF) {
         Optional<FaixaIRRF> faixaPorValor = tabelaIRRF.getFaixaPorValor(colaborador.getRemuneracao());
         ResultadoCalculoIRRF resultadoCalculoIRRF = new ResultadoCalculoIRRF();
+
+        BigDecimal deducaoDependentes = tabelaIRRF.getValorDeducaoDependente().multiply(BigDecimal.valueOf(colaborador.getDependentes()));
+        BigDecimal remuneracao = colaborador.getRemuneracao().subtract(deducaoDependentes);
         faixaPorValor.ifPresent(faixaIRRF -> {
             BigDecimal aliquota = getSafeAliquota(faixaIRRF);
-            BigDecimal remuneracaoComAliquota = colaborador.getRemuneracao().multiply(aliquota).divide(CENTENA);
+
+            BigDecimal remuneracaoComAliquota = remuneracao.multiply(aliquota).divide(CENTENA);
             BigDecimal resultado = remuneracaoComAliquota.subtract(getSafeDeducao(faixaIRRF));
-            resultadoCalculoIRRF.setValor(resultado);
+            BigDecimal roundedResult = resultado.setScale(2, RoundingMode.HALF_UP);
+            resultadoCalculoIRRF.setValor(roundedResult);
         });
 
         return resultadoCalculoIRRF;

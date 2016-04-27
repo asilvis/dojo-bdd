@@ -25,7 +25,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 /**
  * Created by andre.lima on 20/04/2016.
  */
-public class PessoaStepDef extends SpringTest {
+public class ColaboradorStepDef extends SpringTest {
 
     @Autowired
     CargoRepository cargoRepository;
