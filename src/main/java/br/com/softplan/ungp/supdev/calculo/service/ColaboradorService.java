@@ -1,6 +1,7 @@
 package br.com.softplan.ungp.supdev.calculo.service;
 
 import br.com.softplan.ungp.supdev.calculo.entity.Colaborador;
+import br.com.softplan.ungp.supdev.calculo.exception.BusinessException;
 import br.com.softplan.ungp.supdev.calculo.exception.InfoException;
 import br.com.softplan.ungp.supdev.calculo.exception.MultipleInfoException;
 import br.com.softplan.ungp.supdev.calculo.repository.ColaboradorRepository;
@@ -20,24 +21,32 @@ public class ColaboradorService {
     private ColaboradorRepository colaboradorRepository;
 
     public void salvar(Colaborador colaborador) {
-        colaboradorRepository.save(colaborador);
+        try {
+            colaboradorRepository.save(colaborador);
+        } catch (ConstraintViolationException cve) {
+            Set<String> violations = cve.getConstraintViolations().stream()
+                    .map(constraintViolation -> constraintViolation.getMessage())
+                    .collect(Collectors.toSet());
+
+            throw new BusinessException(violations);
+        }
     }
 
     public void salvarEmLote(List<Colaborador> colaboradores) {
-        MultipleInfoException multipleInfoException = new MultipleInfoException("Inconsistências");
+        BusinessException businessException = new BusinessException();
         colaboradores.forEach(colaborador -> {
             try {
-                salvar(colaborador);
+                colaboradorRepository.save(colaborador);
             } catch (ConstraintViolationException cve) {
                 Set<String> violations = cve.getConstraintViolations().stream()
                         .map(constraintViolation -> colaborador.getNome() + " - " + constraintViolation.getMessage())
                         .collect(Collectors.toSet());
-                multipleInfoException.addException(new InfoException(colaborador.getNome(), violations));
+                businessException.addMsg(violations);
             }
         });
 
-        if(!multipleInfoException.getInfoExceptions().isEmpty()) {
-            throw multipleInfoException;
+        if(!businessException.getDetails().isEmpty()) {
+            throw businessException;
         }
     }
 
