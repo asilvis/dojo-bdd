@@ -2,6 +2,7 @@ package br.com.softplan.ungp.supdev.calculo.test.pessoa;
 
 import br.com.softplan.ungp.supdev.calculo.entity.Cargo;
 import br.com.softplan.ungp.supdev.calculo.entity.Colaborador;
+import br.com.softplan.ungp.supdev.calculo.exception.BusinessException;
 import br.com.softplan.ungp.supdev.calculo.exception.InfoException;
 import br.com.softplan.ungp.supdev.calculo.exception.MultipleInfoException;
 import br.com.softplan.ungp.supdev.calculo.repository.CargoRepository;
@@ -102,15 +103,8 @@ public class ColaboradorStepDef extends SpringTest {
     public void seráApresentadaUmaMensagem(String msg) {
         HttpClientErrorException recuperar = (HttpClientErrorException) this.thrownException;
         Gson gson = new Gson();
-        try {
-            MultipleInfoException ex = gson.fromJson(recuperar.getResponseBodyAsString(), MultipleInfoException.class);
-            String msgs = ex.getInfoExceptions().stream().map(InfoException::getConstraintViolations).flatMap(Collection::stream).collect(Collectors.joining(System.lineSeparator()));
-            assertThat(msgs).isEqualTo(msg);
-        } catch (Exception e) {
-            InfoException ex = gson.fromJson(recuperar.getResponseBodyAsString(), InfoException.class);
-            assertThat(ex.getConstraintViolations()).hasSize(1).containsExactly(msg);
-        }
-
+        BusinessException ex = gson.fromJson(recuperar.getResponseBodyAsString(), BusinessException.class);
+        assertThat(ex.getMessage()).isEqualTo(msg);
     }
 
     @Dado("^a data de nascimento não é informada$")

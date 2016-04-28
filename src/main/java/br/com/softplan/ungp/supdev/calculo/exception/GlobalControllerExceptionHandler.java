@@ -26,4 +26,10 @@ public class GlobalControllerExceptionHandler {
 	public @ResponseBody MultipleInfoException validatorException(MultipleInfoException e) {
 		return e;
 	}
+
+    @ExceptionHandler(BusinessException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public @ResponseBody BusinessException validatorException(BusinessException e) {
+        return e;
+    }
 }
