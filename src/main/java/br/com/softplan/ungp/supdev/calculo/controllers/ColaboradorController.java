@@ -18,14 +18,14 @@ public class ColaboradorController {
 
     @RequestMapping(method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.OK)
-    public void save(@RequestBody Colaborador colaborador) {
+    public void salvar(@RequestBody Colaborador colaborador) {
         colaboradorService.salvar(colaborador);
     }
 
 
     @RequestMapping(value = "/lote", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.OK)
-    public void saveEmLote(@RequestBody List<Colaborador> colaboradores) {
+    public void salvarEmLote(@RequestBody List<Colaborador> colaboradores) {
         colaboradorService.salvarEmLote(colaboradores);
     }
 
