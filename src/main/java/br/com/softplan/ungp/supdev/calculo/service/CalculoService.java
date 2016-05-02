@@ -1,17 +1,15 @@
 package br.com.softplan.ungp.supdev.calculo.service;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.util.Optional;
+
+import org.springframework.stereotype.Service;
+
 import br.com.softplan.ungp.supdev.calculo.dto.ResultadoCalculoIRRF;
 import br.com.softplan.ungp.supdev.calculo.entity.Colaborador;
 import br.com.softplan.ungp.supdev.calculo.entity.FaixaIRRF;
 import br.com.softplan.ungp.supdev.calculo.entity.TabelaIRRF;
-import br.com.softplan.ungp.supdev.calculo.repository.ColaboradorRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import java.math.BigDecimal;
-import java.math.MathContext;
-import java.math.RoundingMode;
-import java.util.Optional;
 
 @Service
 public class CalculoService {

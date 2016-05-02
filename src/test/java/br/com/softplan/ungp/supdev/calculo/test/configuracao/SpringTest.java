@@ -1,7 +1,9 @@
 package br.com.softplan.ungp.supdev.calculo.test.configuracao;
 
-import br.com.softplan.ungp.supdev.calculo.TestApplication;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import java.io.IOException;
+import java.time.format.DateTimeFormatter;
+import java.util.Arrays;
+
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -18,9 +20,9 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.web.client.RestTemplate;
 
-import java.io.IOException;
-import java.time.format.DateTimeFormatter;
-import java.util.Arrays;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import br.com.softplan.ungp.supdev.calculo.TestApplication;
 
 @SuppressWarnings({"unchecked", "rawtypes"})
 @ContextConfiguration(classes = TestApplication.class, loader = SpringApplicationContextLoader.class)

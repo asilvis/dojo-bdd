@@ -1,6 +1,5 @@
 package br.com.softplan.ungp.supdev.calculo.exception;
 
-import javax.validation.ConstraintViolation;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Set;

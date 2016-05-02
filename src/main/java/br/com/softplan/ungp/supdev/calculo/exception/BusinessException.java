@@ -17,6 +17,11 @@ public class BusinessException extends RuntimeException {
         this.details = details;
     }
 
+    public BusinessException(String string) {
+        this();
+        addMsg(string);
+    }
+
     public void addMsg(String msg) {
         details.add(msg);
     }

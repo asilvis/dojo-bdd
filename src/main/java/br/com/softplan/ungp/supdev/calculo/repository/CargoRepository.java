@@ -1,7 +1,8 @@
 package br.com.softplan.ungp.supdev.calculo.repository;
 
-import br.com.softplan.ungp.supdev.calculo.entity.Cargo;
 import org.springframework.data.repository.CrudRepository;
+
+import br.com.softplan.ungp.supdev.calculo.entity.Cargo;
 
 public interface CargoRepository extends CrudRepository<Cargo, Long>{
 

@@ -1,12 +1,18 @@
 package br.com.softplan.ungp.supdev.calculo.entity;
 
+import java.math.BigDecimal;
+
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+
 import org.hibernate.validator.constraints.NotEmpty;
 import org.hibernate.validator.constraints.br.CPF;
-
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import java.math.BigDecimal;
-import java.util.Date;
 
 @Entity
 @Table(name = "pessoa")
@@ -17,9 +23,10 @@ public class Colaborador {
     private Long id;
 
     private String nome;
-    @Temporal(TemporalType.DATE)
+    
+    //@Temporal(TemporalType.DATE)
     @NotNull(message = "A data de nascimento \u00e9 obrigat\u00f3ria")
-    private Date dataNascimento;
+    private String dataNascimento;
 
     @NotEmpty(message = "O n\u00famero do CPF \u00e9 obrigat\u00f3rio")
     @CPF(message = "O n\u00famero do CPF \u00e9 inv\u00e1lido")
@@ -48,13 +55,6 @@ public class Colaborador {
         this.nome = nome;
     }
 
-    public Date getDataNascimento() {
-        return dataNascimento;
-    }
-
-    public void setDataNascimento(Date dataNascimento) {
-        this.dataNascimento = dataNascimento;
-    }
 
     public String getNumeroCPF() {
         return numeroCPF;
@@ -86,5 +86,13 @@ public class Colaborador {
 
     public void setDependentes(Integer dependentes) {
         this.dependentes = dependentes;
+    }
+
+    public String getDataNascimento() {
+        return dataNascimento;
+    }
+
+    public void setDataNascimento(String dataNascimento) {
+        this.dataNascimento = dataNascimento;
     }
 }
